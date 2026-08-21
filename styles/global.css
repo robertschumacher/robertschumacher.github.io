@@ -1,0 +1,677 @@
+/* Switzer — lokal (Display / UI) */
+@font-face {
+  font-family: "Switzer";
+  src: url("../assets/fonts/switzer/Switzer-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("../assets/fonts/switzer/Switzer-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("../assets/fonts/switzer/Switzer-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer";
+  src: url("../assets/fonts/switzer/Switzer-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Zilla Slab — lokal (Fließtext) */
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("../assets/fonts/Zilla_Slab/ZillaSlab-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("../assets/fonts/Zilla_Slab/ZillaSlab-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("../assets/fonts/Zilla_Slab/ZillaSlab-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("../assets/fonts/Zilla_Slab/ZillaSlab-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("../assets/fonts/Zilla_Slab/ZillaSlab-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Zilla Slab";
+  src: url("../assets/fonts/Zilla_Slab/ZillaSlab-SemiBoldItalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Display/UI: Switzer · Fließtext: Zilla Slab (wie Case-Essay) */
+  --font-body: "Zilla Slab", Georgia, "Times New Roman", serif;
+  --font-display: "Switzer", system-ui, sans-serif;
+  --font-body-size: 1.08rem;
+  --font-body-leading: 1.58;
+
+  --content-pad: 5%;
+  --content-max: 1280px;
+  /** Header/Footer: nah am Viewport-Rand, unabhängig vom Body-Inset */
+  --edge-pad: clamp(1rem, 2.5vw, 1.5rem);
+
+  --color-off-white: #f5f3ee;
+  --color-accent-pink: #f4cbed;
+  --color-menu-bg: #e4e4e4;
+  --color-soft-black: #111111;
+  --color-muted: #737267;
+  --color-warm-gray: #b8b1a7;
+
+  /* Typografie — Labels / Captions */
+  --text-label: 0.875rem;
+  --font-caption-size: 0.8rem;
+  --font-caption-leading: 1.5;
+  --font-caption-max: 48ch;
+
+  --line-height-headline: 0.9;
+
+  /* Shared media-hover (Home work-cards + Work project-cards) */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --media-hover-scale: 1.04;
+  --media-hover-duration: 0.7s;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--color-off-white);
+  color: var(--color-soft-black);
+  font-family: var(--font-body);
+  line-height: var(--font-body-leading);
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  font-size: 112.5%;
+}
+
+body {
+  font-size: var(--font-body-size);
+}
+
+/* Shared media captions (CaseMedia, AlphaVideo, …) */
+.media-caption {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-caption-size);
+  line-height: var(--font-caption-leading);
+  color: var(--color-soft-black);
+  max-width: var(--font-caption-max);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: var(--line-height-headline);
+}
+
+.content-wrap {
+  padding-left: var(--content-pad);
+  padding-right: var(--content-pad);
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Card media hover — Home (.work-card) + Work (.project-card) */
+.media-hover-frame img,
+.media-hover-frame .media-video video,
+.media-hover-frame .media-video .media-video-fallback {
+  transition: transform var(--media-hover-duration) var(--ease-out-soft);
+}
+
+.media-hover-card:hover .media-hover-frame img,
+.media-hover-card:hover .media-hover-frame .media-video video,
+.media-hover-card:hover .media-hover-frame .media-video .media-video-fallback,
+.media-hover-card:focus-visible .media-hover-frame img,
+.media-hover-card:focus-visible .media-hover-frame .media-video video,
+.media-hover-card:focus-visible .media-hover-frame .media-video .media-video-fallback {
+  transform: scale(var(--media-hover-scale));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-hover-frame img,
+  .media-hover-frame .media-video video,
+  .media-hover-frame .media-video .media-video-fallback {
+    transition: none;
+  }
+
+  .media-hover-card:hover .media-hover-frame img,
+  .media-hover-card:hover .media-hover-frame .media-video video,
+  .media-hover-card:hover .media-hover-frame .media-video .media-video-fallback,
+  .media-hover-card:focus-visible .media-hover-frame img,
+  .media-hover-card:focus-visible .media-hover-frame .media-video video,
+  .media-hover-card:focus-visible .media-hover-frame .media-video .media-video-fallback {
+    transform: none;
+  }
+}
+
+/* Text-Marker: ausgefranzte Pink-Unterlegung hinter dem Text (wie Logo) */
+.nav .nav-link-text,
+.home-section-link-text {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+  text-decoration: none;
+}
+
+/* Text immer über dem Marker — kein z-index: -1 (vermeidet Hover-Flicker) */
+.link-label {
+  position: relative;
+  z-index: 1;
+}
+
+.link-marker {
+  position: absolute;
+  left: -8%;
+  width: 116%;
+  /* Feste Dicke in em → gleiche Balkendicke; Breite wird horizontal gestreckt */
+  top: 0.40em;
+  height: 0.58em;
+  /* Ein CSS-Asset statt N× <img> — Browser lädt underline einmal */
+  background: url("../assets/brand/rs-name-underline.png") center / 100% 100% no-repeat;
+  z-index: 0;
+  opacity: 0;
+  transform: rotate(-1.5deg);
+  transform-origin: center center;
+  pointer-events: none;
+  /* Breite per clip statt scaleX — kein Stacking-Glitch beim Hover */
+  clip-path: inset(0 100% 0 0);
+  transition:
+    opacity 0.22s ease,
+    clip-path 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav .main-title .link-marker {
+  top: .8em;
+  height: 0.25em;
+}
+
+.nav .nav-link:hover .link-marker,
+.nav .nav-link:focus-visible .link-marker,
+.home-section-link:hover .link-marker,
+.home-section-link:focus-visible .link-marker,
+.filter-item:hover .link-marker,
+.filter-item:focus-visible .link-marker,
+.filter-item.active .link-marker {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+.link-marker--static {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Section-Links (z. B. „Alle Arbeiten“) */
+.home-section-link {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-soft-black);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.home-section-link-arrow {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-section-link:hover .home-section-link-arrow,
+.home-section-link:focus-visible .home-section-link-arrow {
+  transform: translateX(0.2em);
+}
+
+.home-section-link:focus-visible {
+  outline: 2px solid var(--color-soft-black);
+  outline-offset: 4px;
+}
+
+/* Work-Titel mit Zeilenumbruch im Frontmatter (\n oder YAML-Block) */
+.title-multiline {
+  white-space: pre-line;
+}
+
+/* Scroll-Reveal — global, mit Fallback ohne JS / bei reduced motion */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Medien (Galerie): etwas weiter von unten — kaschiert Nachladen, wie auf strai.de */
+.reveal.reveal--media {
+  transform: translateY(40px);
+  transition-duration: 0.9s, 0.9s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  /* none statt translateY(0): sonst bleibt eine Transform-Layer → 1px-Nähte an Videos */
+  transform: none;
+}
+
+html:not(.js) .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Cookie-Hinweis — fixed am Viewport (nicht unter overflow-x: clip auf body) */
+#cookie-banner {
+  position: fixed;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 300;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--color-off-white);
+  border-top: 1px solid color-mix(in srgb, var(--color-warm-gray) 50%, transparent);
+  font-family: var(--font-body);
+  color: var(--color-soft-black);
+}
+
+#cookie-banner[hidden] {
+  display: none !important;
+}
+
+#cookie-banner .cookie-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.7rem var(--edge-pad);
+  padding-bottom: max(0.7rem, env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+#cookie-banner .cookie-banner-text {
+  margin: 0;
+  flex: 1 1 auto;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #4a4a4a;
+}
+
+#cookie-banner .cookie-banner-text a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+#cookie-banner .cookie-banner-text a:hover {
+  opacity: 0.65;
+}
+
+#cookie-banner .cookie-banner-btn {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--color-soft-black);
+  background: var(--color-soft-black);
+  color: var(--color-off-white);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#cookie-banner .cookie-banner-btn:hover {
+  background: #333;
+  border-color: #333;
+  opacity: 1;
+}
+
+#cookie-banner .cookie-banner-btn:focus-visible {
+  outline: 2px solid #161616;
+  outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  #cookie-banner .cookie-banner-inner {
+    align-items: flex-start;
+    gap: 0.55rem 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* —— About page —— */
+.about-page {
+  padding-bottom: 0;
+  color: var(--color-soft-black);
+}
+
+.about-hero {
+  width: 100%;
+}
+
+.about-hero-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #e8e4dc;
+}
+
+.about-hero-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.about-hero-name {
+  position: absolute;
+  left: var(--content-pad);
+  bottom: clamp(1.1rem, 3vw, 2rem);
+  z-index: 2;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--about-hero-name-color, #fff);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Dunkler Name → kein Schatten (site.ts → homeAbout.heroNameColor) */
+.about-hero-frame[data-name-shadow="off"] .about-hero-name {
+  text-shadow: none;
+}
+
+.about-content {
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.about-sec {
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.about-sec:last-child {
+  margin-bottom: 0;
+}
+
+.about-sec--split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-warm-gray) 55%, transparent);
+}
+
+.about-sec--split:has(+ .about-contact) {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.about-sec-title {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--color-soft-black);
+}
+
+.about-sec-lead {
+  margin: 0;
+  max-width: 28em;
+  /* Wie Home-Feld-Labels (Konzept / Kreation / …): Switzer, Caps */
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--color-soft-black);
+}
+
+.about-sec-body {
+  max-width: 40rem;
+}
+
+.about-sec-body p {
+  margin: 0 0 1rem;
+  font-family: var(--font-body);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-leading);
+  color: var(--color-soft-black);
+}
+
+.about-sec-body p:last-child {
+  margin-bottom: 0;
+}
+
+.about-experience-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.about-experience-item h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--color-soft-black);
+}
+
+.about-experience-item p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--color-soft-black);
+}
+
+.about-projects-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.about-projects-header .about-sec-title {
+  margin-bottom: 0;
+}
+
+.about-project-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem 1rem;
+}
+
+.about-project-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.about-project-card:hover {
+  opacity: 0.75;
+}
+
+.about-project-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e8e4dc;
+}
+
+.about-project-media img,
+.about-project-media .media-video video,
+.about-project-media .media-video .media-video-fallback {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-project-card:hover .about-project-media img,
+.about-project-card:hover .about-project-media .media-video video,
+.about-project-card:hover .about-project-media .media-video .media-video-fallback {
+  transform: scale(1.03);
+}
+
+.about-project-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e0dbd2;
+}
+
+.about-project-body h3 {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  overflow-wrap: break-word;
+  color: var(--color-soft-black);
+}
+
+.about-project-body p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--color-soft-black);
+}
+
+.about-contact .contact-cta--prominent {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .about-hero-frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  .about-sec--split {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .about-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .about-project-grid {
+    grid-template-columns: 1fr;
+  }
+}
