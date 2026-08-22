@@ -337,7 +337,8 @@ html:not(.js) .reveal {
   position: fixed;
   top: auto;
   right: 0;
-  bottom: 0;
+  /* Über dem Netlify-Free-Badge, damit der Okay-Button frei bleibt */
+  bottom: 3.75rem;
   left: 0;
   z-index: 300;
   width: 100%;
