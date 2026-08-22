@@ -332,22 +332,21 @@ html:not(.js) .reveal {
   }
 }
 
-/* Cookie-Hinweis — fixed am Viewport (nicht unter overflow-x: clip auf body) */
+/* Cookie-Hinweis — kompakte Box unten links (frei vom Netlify-Badge rechts) */
 #cookie-banner {
   position: fixed;
   top: auto;
-  right: 0;
-  /* Über dem Netlify-Free-Badge, damit der Okay-Button frei bleibt */
-  bottom: 3.75rem;
-  left: 0;
+  right: auto;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  left: var(--edge-pad);
   z-index: 300;
-  width: 100%;
+  width: min(22rem, calc(100vw - (2 * var(--edge-pad))));
   max-width: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background: var(--color-off-white);
-  border-top: 1px solid color-mix(in srgb, var(--color-warm-gray) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-warm-gray) 55%, transparent);
   font-family: var(--font-body);
   color: var(--color-soft-black);
 }
@@ -358,20 +357,19 @@ html:not(.js) .reveal {
 
 #cookie-banner .cookie-banner-inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
   width: 100%;
   margin: 0;
-  padding: 0.7rem var(--edge-pad);
-  padding-bottom: max(0.7rem, env(safe-area-inset-bottom));
+  padding: 1rem 1.1rem 1.05rem;
   box-sizing: border-box;
 }
 
 #cookie-banner .cookie-banner-text {
   margin: 0;
-  flex: 1 1 auto;
-  font-size: 0.75rem;
+  flex: none;
+  font-size: 0.78rem;
   line-height: 1.45;
   color: #4a4a4a;
 }
@@ -388,6 +386,7 @@ html:not(.js) .reveal {
 
 #cookie-banner .cookie-banner-btn {
   flex: 0 0 auto;
+  align-self: flex-start;
   margin: 0;
   padding: 0.45rem 0.9rem;
   border: 1px solid var(--color-soft-black);
@@ -419,11 +418,14 @@ html:not(.js) .reveal {
 }
 
 @media (max-width: 560px) {
+  #cookie-banner {
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    width: calc(100vw - (2 * var(--edge-pad)));
+  }
+
   #cookie-banner .cookie-banner-inner {
-    align-items: flex-start;
-    gap: 0.55rem 1rem;
-    padding-top: 0.75rem;
-    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
   }
 }
 
