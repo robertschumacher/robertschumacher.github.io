@@ -31,6 +31,25 @@
   font-display: swap;
 }
 
+/* Merriweather — lokal (Journal, italic light/regular) */
+@font-face {
+  font-family: "Merriweather";
+  src: url("../assets/fonts/Merriweather/static/Merriweather_24pt-LightItalic.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("../assets/fonts/Merriweather/static/Merriweather_24pt-Italic.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Zilla Slab — lokal (Fließtext) */
 @font-face {
   font-family: "Zilla Slab";
@@ -111,6 +130,11 @@
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --media-hover-scale: 1.04;
   --media-hover-duration: 0.7s;
+}
+
+/* Case-Media: volle Contain-Videos ohne grauen Frame-Hintergrund */
+.media-item:not(.media-item--sync) .media-frame:has(.media-video--contain) {
+  background: transparent;
 }
 
 html,
@@ -332,7 +356,7 @@ html:not(.js) .reveal {
   }
 }
 
-/* Cookie-Hinweis — kompakte Box unten links (frei vom Netlify-Badge rechts) */
+/* Cookie-Hinweis — kompakte Box unten links */
 #cookie-banner {
   position: fixed;
   top: auto;
