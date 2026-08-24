@@ -31,30 +31,7 @@
   font-display: swap;
 }
 
-/* Merriweather — lokal, Latin/DE-Subset (Journal, italic light/regular) */
-@font-face {
-  font-family: "Merriweather";
-  src:
-    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-LightItalic.woff2")
-      format("woff2"),
-    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-LightItalic.woff")
-      format("woff");
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Merriweather";
-  src:
-    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-Italic.woff2")
-      format("woff2"),
-    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-Italic.woff")
-      format("woff");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
+/* Merriweather: nur auf Journal → public/styles/merriweather.css */
 
 /* Zilla Slab — lokal (Fließtext) */
 @font-face {
@@ -201,6 +178,44 @@ h6 {
   margin-right: auto;
   width: 100%;
   box-sizing: border-box;
+}
+
+/* Impressum / Datenschutz */
+.content-page {
+  padding: 5vw 8vw;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.content-page h1,
+.content-page h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.content-page p,
+.content-page ul,
+.content-page a,
+.content-page code {
+  font-family: var(--font-body);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-leading);
+  color: #161616;
+  text-decoration: none;
+}
+
+.content-page code {
+  font-size: 0.92em;
+}
+
+.content-page a:hover {
+  opacity: 0.6;
+}
+
+.content-page ul {
+  list-style: disc;
+  padding-left: 1.5rem;
 }
 
 /* Card media hover — Home (.work-card) + Work (.project-card) */
@@ -575,114 +590,6 @@ html:not(.js) .reveal {
   margin-bottom: 0;
 }
 
-.about-experience-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-}
-
-.about-experience-item h3 {
-  margin: 0 0 0.35rem;
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  line-height: 1.2;
-  color: var(--color-soft-black);
-}
-
-.about-experience-item p {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 1.02rem;
-  line-height: 1.55;
-  color: var(--color-soft-black);
-}
-
-.about-projects-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.about-projects-header .about-sec-title {
-  margin-bottom: 0;
-}
-
-.about-project-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem 1rem;
-}
-
-.about-project-card {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.3s ease;
-}
-
-.about-project-card:hover {
-  opacity: 0.75;
-}
-
-.about-project-media {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: #e8e4dc;
-}
-
-.about-project-media img,
-.about-project-media .media-video video,
-.about-project-media .media-video .media-video-fallback {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.about-project-card:hover .about-project-media img,
-.about-project-card:hover .about-project-media .media-video video,
-.about-project-card:hover .about-project-media .media-video .media-video-fallback {
-  transform: scale(1.03);
-}
-
-.about-project-placeholder {
-  width: 100%;
-  height: 100%;
-  background: #e0dbd2;
-}
-
-.about-project-body h3 {
-  margin: 0 0 0.25rem;
-  font-family: var(--font-display);
-  font-size: clamp(0.72rem, 1.1vw, 0.88rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1.15;
-  overflow-wrap: break-word;
-  color: var(--color-soft-black);
-}
-
-.about-project-body p {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 400;
-  line-height: 1.45;
-  color: var(--color-soft-black);
-}
-
 .about-contact .contact-cta--prominent {
   margin-top: 0;
 }
@@ -695,16 +602,5 @@ html:not(.js) .reveal {
   .about-sec--split {
     grid-template-columns: 1fr;
     gap: 1.25rem;
-  }
-
-  .about-project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem 1rem;
-  }
-}
-
-@media (max-width: 540px) {
-  .about-project-grid {
-    grid-template-columns: 1fr;
   }
 }

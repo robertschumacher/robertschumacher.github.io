@@ -1,0 +1,24 @@
+/* Merriweather — nur Journal (Italic Light/Regular, Latin/DE-Subset) */
+@font-face {
+  font-family: "Merriweather";
+  src:
+    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-LightItalic.woff2")
+      format("woff2"),
+    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-LightItalic.woff")
+      format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src:
+    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-Italic.woff2")
+      format("woff2"),
+    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-Italic.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
