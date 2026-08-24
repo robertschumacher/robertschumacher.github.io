@@ -31,11 +31,14 @@
   font-display: swap;
 }
 
-/* Merriweather — lokal (Journal, italic light/regular) */
+/* Merriweather — lokal, Latin/DE-Subset (Journal, italic light/regular) */
 @font-face {
   font-family: "Merriweather";
-  src: url("../assets/fonts/Merriweather/static/Merriweather_24pt-LightItalic.ttf")
-    format("truetype");
+  src:
+    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-LightItalic.woff2")
+      format("woff2"),
+    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-LightItalic.woff")
+      format("woff");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -43,8 +46,11 @@
 
 @font-face {
   font-family: "Merriweather";
-  src: url("../assets/fonts/Merriweather/static/Merriweather_24pt-Italic.ttf")
-    format("truetype");
+  src:
+    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-Italic.woff2")
+      format("woff2"),
+    url("../assets/fonts/Merriweather/webfonts/Merriweather_24pt-Italic.woff")
+      format("woff");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
