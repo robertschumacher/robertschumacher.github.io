@@ -595,6 +595,11 @@ html:not(.js) .reveal {
 }
 
 @media (max-width: 900px) {
+  :root {
+    --font-body-size: 0.98rem;
+    --font-body-leading: 1.5;
+  }
+
   .about-hero-frame {
     aspect-ratio: 4 / 3;
   }
