@@ -121,9 +121,10 @@
             });
           },
           {
-            threshold: 0.12,
-            // Kurz bevor das Element voll sichtbar ist starten → weicher Eintritt
-            rootMargin: "0px 0px -8% 0px",
+            threshold: 0.01,
+            /* Früher starten (unterhalb Viewport), damit Medien schon laden/erscheinen
+               bevor man „ins Leere“ scrollt — statt erst tief im sichtbaren Bereich. */
+            rootMargin: "0px 0px 35% 0px",
           }
         );
         document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
