@@ -115,6 +115,49 @@
   --media-hover-duration: 0.7s;
 }
 
+/* ------------------------------------------------------------------ */
+/* Typografie-Rollen — hier anpassen, wenn Titel/Meta überall ändern */
+/* Doku: CD-Manual Kap. 03 · HOW_TO „Styles finden“                   */
+/* ------------------------------------------------------------------ */
+
+/** Projekt-/Case-Titel unter Teaser-Bildern (Work-Liste, Home, Related) */
+.type-card-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: var(--line-height-headline);
+  overflow-wrap: break-word;
+  margin: 0;
+}
+
+/** /work/ — Card-Titel */
+.type-card-title--work {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/** Home Featured-Work */
+.type-card-title--home {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  margin: 0 0 0.3rem;
+}
+
+/** Related Cases am Case-/Journal-Ende */
+.type-card-title--related {
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  margin: 0 0 0.25rem;
+}
+
+/** Section-Überschriften (Home Work, About, ContactCTA default) */
+.type-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
 /* Case-Media: volle Contain-Videos ohne grauen Frame-Hintergrund */
 .media-item:not(.media-item--sync) .media-frame:has(.media-video--contain) {
   background: transparent;
@@ -190,7 +233,7 @@ h6 {
 .content-page h1,
 .content-page h2 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
@@ -312,7 +355,7 @@ h6 {
 .home-section-link {
   font-family: var(--font-display);
   font-size: 0.8125rem;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
@@ -552,11 +595,6 @@ html:not(.js) .reveal {
 
 .about-sec-title {
   margin: 0 0 0.85rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   line-height: 1.05;
   color: var(--color-soft-black);
 }
