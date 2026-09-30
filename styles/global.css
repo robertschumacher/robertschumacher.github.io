@@ -303,6 +303,7 @@ h6 {
   text-decoration: none;
 }
 
+
 /* Text immer über dem Marker — kein z-index: -1 (vermeidet Hover-Flicker) */
 .link-label {
   position: relative;
